@@ -1,15 +1,14 @@
 import express from 'express'
 import cors from 'cors'
 import { AddressInfo } from 'net'
-import dotenv from 'dotenv'
-import knex from 'knex'
+import createStudent from './endpoints/createStudent'
 
 export const app = express()
 
 app.use(express.json())
 app.use(cors())
 
-app.put("/")
+app.post("/students", createStudent)
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if(server){

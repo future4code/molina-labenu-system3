@@ -6,9 +6,9 @@ const createStudent = async(req: Request, res: Response) => {
     try {
 
         const {nome, email, data_nasc} = req.body
-        const [dia, mes, ano] = data_nasc.split("/")
+        const [day, month, year] = data_nasc.split("/")
 
-        const newDate: string = `${ano}-${mes}-${dia}`
+        const newDate: string = `${year}-${month}-${day}`
 
         if (!nome || !email || !data_nasc) {
             throw new Error("Preencha todos os campos obrigatórios");

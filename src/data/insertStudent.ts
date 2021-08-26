@@ -4,7 +4,7 @@ const insertStudent = async (nome: string, email: string, newDate: string): Prom
 
     const result = await connection('labenu_system_student')
     .insert({
-        id: Date.now().toString(),
+        id: Date.now() + Math.random().toString(),
         nome,
         email,
         data_nasc: newDate,

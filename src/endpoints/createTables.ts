@@ -52,7 +52,43 @@ export const criaTabelas = async (req: Request, res: Response): Promise<void> =>
                 name VARCHAR(64) NOT NULL,
                 data_inicio DATE NOT NULL,
                 data_final DATE NOT NULL,
-                modulo INT NOT NULL
+                modulo ENUM('0', '1', '2', '3', '4', '5', '6', '7') DEFAULT '0'
+            );
+
+            INSERT INTO labenu_system_specialties(id, name)
+            VALUES(
+                "001",
+                "React"
+            );
+            INSERT INTO labenu_system_specialties(id, name)
+            VALUES(
+                "002",
+                "Redux"
+            );
+            INSERT INTO labenu_system_specialties(id, name)
+            VALUES(
+                "003",
+                "CSS"
+            );
+            INSERT INTO labenu_system_specialties(id, name)
+            VALUES(
+                "004",
+                "Typescript"
+            );
+            INSERT INTO labenu_system_specialties(id, name)
+            VALUES(
+                "005",
+                "Programação Orientada a Objetos"
+            );
+            INSERT INTO labenu_system_specialties(id, name)
+            VALUES(
+                "006",
+                "Backend"
+            );
+            INSERT INTO labenu_system_specialties(id, name)
+            VALUES(
+                "007",
+                "Testes"
             );
 
             `)

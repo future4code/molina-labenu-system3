@@ -1,4 +1,5 @@
-import app from './app'
+import express from 'express'
+import cors from 'cors'
 import { AddressInfo } from 'net'
 import createStudent from './endpoints/createStudent'
 import createClass from './endpoints/createClass'

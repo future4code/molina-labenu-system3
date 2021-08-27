@@ -6,6 +6,7 @@ import createTeacher from './endpoints/createTeacher'
 import createClass from './endpoints/createClass'
 import { getStudents } from './endpoints/getStudents'
 import { getTeachers } from './endpoints/getTeachers'
+import createHobbieById from './endpoints/createHobbieById'
 
 export const app = express()
 
@@ -15,6 +16,8 @@ app.use(cors())
 app.post("/cadastro/student", createStudent)
 app.post("/cadastro/teacher", createTeacher)
 app.post("/createClass", createClass)
+
+app.post("/cadastro/hobbie", createHobbieById)
 
 app.get('/students', getStudents)
 app.get('/teachers', getTeachers)

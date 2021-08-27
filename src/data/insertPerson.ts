@@ -14,7 +14,7 @@ const insertPerson = async (
         nome,
         email,
         data_nasc: newDate,
-        class_id: turma ? turma : "007"
+        class_id: turma ? turma : "disponivel"
     })
 
     return result

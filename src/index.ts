@@ -5,6 +5,7 @@ import createClass from './endpoints/createClass'
 import createPerson from './endpoints/createPerson'
 import { getStudents } from './endpoints/getStudents'
 import { getTeachers } from './endpoints/getTeachers'
+import updatePersonClass from './endpoints/updatePersonClass'
 
 export const app = express()
 
@@ -16,6 +17,8 @@ app.post("/createClass", createClass)
 
 app.get('/students', getStudents)
 app.get('/teachers', getTeachers)
+
+app.put('/turma:id', updatePersonClass)
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if(server){

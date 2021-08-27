@@ -9,7 +9,7 @@ const insertStudent = async (
 
     const result = await connection(`labenu_system_${table}`)
     .insert({
-        id: Math.random(),
+        id: Date.now() + Math.random().toString(),
         nome,
         email,
         data_nasc: newDate,

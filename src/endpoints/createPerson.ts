@@ -1,15 +1,17 @@
 import { Request, Response } from "express"
 import insertPerson from '../data/insertPerson'
 
-const createStudent = async(req: Request, res: Response) => {
+const createPerson = async(req: Request, res: Response) => {
 
     try {
 
-        const {nome, email, data_nasc} = req.body
-        const table = "student"
+        const {nome, email, data_nasc, turma, tipo} = req.body
+        
+        const table = tipo
+
         console.log(req.body)
         
-        if (!nome || !email || !data_nasc) {
+        if (!nome || !email || !data_nasc || !tipo) {
             throw new Error("Preencha todos os campos obrigatórios")
         }
         
@@ -21,13 +23,15 @@ const createStudent = async(req: Request, res: Response) => {
 
         const newDate: string = `${year}-${month}-${day}`
         
-        await insertPerson(nome, email, newDate, table)
+        await insertPerson(nome, email, newDate, turma, table)
         
-        res.status(200).send({message:'Estudante criado com sucesso'})
+        const sucessMessage = tipo === 'student'? 'Estudante criado com sucesso' : 'Docente criado com sucesso'
+
+        res.status(201).send({message: sucessMessage})
         
     } catch (error) {
         res.status(404).send(error.message || error.sqlMessage)
     }
 }
 
-export default createStudent
+export default createPerson

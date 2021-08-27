@@ -1,30 +1,30 @@
 [
     {
         "id":1,
-        "name": "React"
+        "nome": "React"
     },
     {
         "id":2,
-        "name": "Redux"
+        "nome": "Redux"
     },
     {
         "id":3,
-        "name": "CSS"
+        "nome": "CSS"
     },
     {
         "id":4,
-        "name": "Typescript"
+        "nome": "Typescript"
     },
     {
         "id":5,
-        "name": "Programação Orientada a Objetos"
+        "nome": "Programação Orientada a Objetos"
     },
     {
         "id":6,
-        "name": "Backend"
+        "nome": "Backend"
     },
     {
         "id":7,
-        "name": "Testes"
+        "nome": "Testes"
     }
 ]

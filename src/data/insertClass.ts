@@ -5,7 +5,7 @@ const insertClass = async(name: string, startDate: string, finalDate: string, mo
     await connection.raw(`
         INSERT INTO labenu_system_class (id, nome, data_inicio, data_final, modulo )
         VALUES(
-            ${Date.now() + Math.random()},
+            ${Date.now() + Math.random().toString()},
             "${name}",
             "${startDate}",
             "${finalDate}",

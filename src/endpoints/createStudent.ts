@@ -6,7 +6,7 @@ const createStudent = async(req: Request, res: Response) => {
     try {
 
         const {nome, email, data_nasc} = req.body
-        const table = req.params.table
+        const table = "student"
         console.log(req.body)
         
         if (!nome || !email || !data_nasc) {

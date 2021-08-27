@@ -1,33 +1,109 @@
-## LabenuSystem:
+<h1 align="center" id="top">:rocket: == Labenu System == :rocket:</h1>
 
-Você estuda na Labenu_ há tanto tempo que já parecem anos, não é? Então, hoje, vamos pedir para criar um sistema que represente o básico da nossa organização. 
+<p align="center">
+  <a href="#sobre">Sobre</a> &#xa0; | &#xa0; 
+  <a href="#funciona">O que funciona</a> &#xa0; | &#xa0;
+  <!--<a href="#nao-funciona">O que não funciona</a> &#xa0; | &#xa0;-->
+  <a href="#pendente">Pendências</a> &#xa0; | &#xa0;
+  <a href="#requisitos">Pré requisitos</a> &#xa0; | &#xa0;
+  <a href="#observacoes">Observações</a> &#xa0; | &#xa0;
+  <a href="#desenvolvedores">Desenvolvedores</a>
+</p>
 
-Ele deve possuir, ao menos, as 3 entidades importantes:
+<h2 id="sobre">:notebook: Sobre </h2>
 
-1. Estudantes 
+<p align="center">:rocket: Projeto desenvolvido conforme proposta do bootcamp ministrado pela Labenu para criação de um sistema básico de gestão de dados da Labenu através da aplicação de Express, Typescript, Node.js, Postman, MySQL e Knex. </p>
 
-    Representa estudantes da nossa instituição. Eles devem possuir: id, nome, email, data de nascimento e os principais hobbies dele. 
+<h2 id="tecnologias"> 🛠 Tecnologias </h2>
 
-2. Docente
+As seguintes ferramentas foram usadas na construção do projeto:
 
-    Representa docentes da nossa instituição. Eles devem possuir: id, nome, email, data de nascimento e todas as especialidades dele. Há 7 especialidades: React, Redux, CSS, Testes, Typescript, Programação Orientada a Objetos e Backend
+* Express
+* Typescript
+* Node.js
+* Postman
+* Knex
+* MySQL
+* Metodologias ágeis e Scrum
 
-3. Turma
+<h2 id="funciona">:heavy_check_mark: O que funciona</h2>
 
-    Toda turma é composta das seguintes características: id, nome, data de início, data de término, lista de professores responsáveis, uma lista de alunos e módulo atual em que a turma está.
+* Login e Cadastros com validação de campos;
+* Lista e Seleção de restaurantes com filtro por categorias únicas e busca por por nome;
+* Visualizar e Selecionar itens do cardápio de um restaurante;
+* Carrinho para confirmação do pedido, podendo remover itens;
+* Seção de informações do usuário com histórico de pedidos e edição de cadastro;
+* Informação de um pedido em andamento;
+<!--
+<h2 id="nao-funciona">:x: O que não funciona</h2>
 
-    O módulo pode assumir os valores de 1 a 7 ou `undefined`, indicando que as aulas dessa turma ainda não começaram. Para esse exercício, vamos considerar que existam dois tipos de turma: integral ou noturna. Há uma restrição para o nome das turmas noturnas: tem que terminar com `-na-night`.
+* N/A -->
+ 
+<h2 id="pendente">:construction: Em desenvolvimento</h2>
 
-As funcionalidades básicas são:
+- [x] Versão Desktop
 
-→ Criar estudante;
+<h2 id="link">:link: Link Surge - link para visualização do site</h2>
+<a href="http://fourfood-molina3-labenu.surge.sh">fourFoodA</a>
 
-→ Criar docente;
+<h2 id="imagens">:computer: Imagens</h2>
 
-→ Criar turma;
 
-→ Adicionar estudante na turma;
+<h2 id="requisitos">:leftwards_arrow_with_hook: Pré-requisitos</h2>
 
-→ Adicionar docente na turma;
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
-→ Pegar a idade de algum estudante a partir do id
+<h4>:checkered_flag: Rodando o projeto </h4>
+
+```bash
+# Clone este repositório
+$ git clone <https://github.com/future4code/molina-labenu-system3>
+
+# Acesse a pasta do projeto no terminal
+$ cd ./molina-labenu-system3
+
+# Instale as dependências
+$ npm install
+
+# Para iniciar o projeto
+$ npm run start
+
+# O servidor inciará na porta:3000 - acesse <http://localhost:3000>
+```
+
+<h2 id="observacoes">:pencil: Observações</h2>
+
+- Ícones utilizados para organização de commit's
+
+:checkered_flag: release
+:package: nova funcionalidade 
+:arrow_up: atualização 
+:beetle: correção de bug
+:art: estilização
+
+<h2 id="desenvolvedores">:construction_worker: Desenvolvedoras</h2>
+
+<table> 
+<tr>
+ 
+ <td align="center"><a href="https://github.com/bellacbs"><img style="border-radius: 50%" src="https://avatars.githubusercontent.com/u/35279793?v=4" width="100px" alt=""/>
+ <br />
+ <sub><b>Izabella Brandão</b></sub></a> <a href="https://github.com/bellacbs">🚀</a></td>
+    
+ <td align="center"><a href="https://github.com/tshadz"><img style="border-radius: 50%" src="https://avatars.githubusercontent.com/u/80704054?v=4" width="100px" alt=""/>
+ <br />
+ <sub><b>Thaís Sombra</b></sub></a> <a href="https://github.com/tshadz">🚀</a></td>
+ 
+ <td align="center"><a href="https://github.com/VitoriaMochovik"><img style="border-radius: 50%" src="https://avatars.githubusercontent.com/u/82537066?v=4" width="100px" alt=""/>
+ <br />
+ <sub><b>Vitória Mochovik</b></sub></a> <a href="https://github.com/VitoriaMochovik">🚀</a></td>
+ 
+</tr>
+  
+</table>
+
+👋🏽 Entre em contato!
+
+<a href="#top">Voltar para o topo</a>

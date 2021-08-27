@@ -1,9 +1,8 @@
 import express from 'express'
 import cors from 'cors'
 import { AddressInfo } from 'net'
-import createStudent from './endpoints/createStudent'
-import createTeacher from './endpoints/createTeacher'
 import createClass from './endpoints/createClass'
+import createPerson from './endpoints/createPerson'
 import { getStudents } from './endpoints/getStudents'
 import { getTeachers } from './endpoints/getTeachers'
 
@@ -12,8 +11,7 @@ export const app = express()
 app.use(express.json())
 app.use(cors())
 
-app.post("/cadastro/student", createStudent)
-app.post("/cadastro/teacher", createTeacher)
+app.post("/cadastro", createPerson)
 app.post("/createClass", createClass)
 
 app.get('/students', getStudents)

@@ -4,6 +4,7 @@ const insertPerson = async (
     nome: string, 
     email: string, 
     newDate: string,
+    turma: string,
     table: string
     ):Promise<any> => {
 
@@ -13,7 +14,7 @@ const insertPerson = async (
         nome,
         email,
         data_nasc: newDate,
-        class_id: "007"
+        class_id: turma ? turma : "007"
     })
 
     return result

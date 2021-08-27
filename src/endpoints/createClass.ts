@@ -3,36 +3,39 @@ import insertClass from "../data/insertClass";
 
 const createClass = async(req: Request, res: Response) =>{
     try{
-        const {name, startDate, finalDate, module} = req.body
-        // const module = req.body.module as string
+        const {name, startDate, finalDate, module, shift} = req.body
 
-        if(!name && !startDate && finalDate){
-            throw new Error("Mandatory id, name, startDate and finalDate")
+        if(!name || !startDate || !finalDate || !shift){
+            throw new Error("Mandatory id, name, startDate, finalDate and shift")
         }
 
-        if(typeof name !== "string" || typeof startDate !== "string" || typeof finalDate !== "string" || typeof module !== "string"){
+        if(typeof name !== "string" || typeof startDate !== "string" || typeof finalDate !== "string" 
+        || typeof module !== "string" || typeof shift !== "string"){
             throw new Error("Expected string to 'name', 'startDate', 'finalDate' and 'module'")
         }
 
-        if(module){
-            const classModule = ["0","1","2","3","4","5","6","7"]
+        const newShift = shift && (shift as string).toLowerCase()
 
-            const findModule = classModule.find((module) => module)
-
-            if(!findModule){
-                throw new Error("Valid modules: '0', '1', '2', '3', '4', '5', '6', '7'")
-            }
+        if(newShift !== "full" && newShift !== "evening class"){
+            throw new Error("Include full or evening class")
         }
 
         const newStartDate = startDate.split("/").reverse().join("/")
         const newFinalDate = finalDate.split("/").reverse().join("/")
         
-        await insertClass(name, newStartDate, newFinalDate, module)
+        await insertClass(name, newStartDate, newFinalDate, module, newShift)
 
         res.status(200).send({message:'Class Created Successfully'})
         
     } catch (error) {
-        res.status(404).send(error.message || error.sqlMessage)
+        switch(error.code){
+            case "WARN_DATA_TRUNCATED":
+                res.status(404).send("Valid modules: '0', '1', '2', '3', '4', '5', '6', '7'")
+            case "ER_TRUNCATED_WRONG_VALUE":
+                res.status(404).send("Date format must be DD/MM/YYYY")
+            default:
+                res.status(404).send(error.message || error.sqlMessage)
+        }
     }
 }
 

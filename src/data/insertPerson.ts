@@ -1,6 +1,6 @@
 import { connection } from "./connection";
 
-const insertStudent = async (
+const insertPerson = async (
     nome: string, 
     email: string, 
     newDate: string,
@@ -19,4 +19,4 @@ const insertStudent = async (
     return result
 }
 
-export default insertStudent;
+export default insertPerson;

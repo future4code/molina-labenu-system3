@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import insertStudent from '../data/insertStudent'
+import insertPerson from '../data/insertPerson'
 
 const createStudent = async(req: Request, res: Response) => {
 
@@ -21,7 +21,7 @@ const createStudent = async(req: Request, res: Response) => {
 
         const newDate: string = `${year}-${month}-${day}`
         
-        await insertStudent(nome, email, newDate, table)
+        await insertPerson(nome, email, newDate, table)
         
         res.status(200).send({message:'Estudante criado com sucesso'})
         

@@ -7,6 +7,7 @@ import { getStudents } from './endpoints/getStudents'
 import { getTeachers } from './endpoints/getTeachers'
 import getAgeStudentsById from './endpoints/getAgeStudentsById'
 import updatePersonClass from './endpoints/updatePersonClass'
+import removePerson from './endpoints/removePerson'
 
 export const app = express()
 
@@ -21,6 +22,8 @@ app.get('/teachers', getTeachers)
 app.get('/student/:id', getAgeStudentsById)
 
 app.put('/turma:id', updatePersonClass)
+
+app.delete('/deletar',removePerson)
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if(server){

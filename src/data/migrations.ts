@@ -6,17 +6,17 @@ const printError = (error: any) => { console.log(error.sqlMessage || error.messa
 const createIndepentTables = () => connection
     .raw(`
         CREATE TABLE labenu_system_specialties (
-            id INT PRIMARY KEY,
+            id VARCHAR(64) PRIMARY KEY,
             nome VARCHAR(64) NOT NULL
         );
 
         CREATE TABLE labenu_system_hobbies (
-            id INT PRIMARY KEY,
+            id VARCHAR(64) PRIMARY KEY,
             nome VARCHAR(64) NOT NULL
         );
 
         CREATE TABLE labenu_system_class (
-            id INT PRIMARY KEY,
+            id VARCHAR(64) PRIMARY KEY,
             nome VARCHAR(64) NOT NULL,
             data_inicio DATE NOT NULL,
             data_final DATE NOT NULL,
@@ -31,7 +31,7 @@ const createDependentTables = () =>
         connection.raw(`
 
         CREATE TABLE labenu_system_student (
-            id INT PRIMARY KEY,
+            id VARCHAR(64) PRIMARY KEY,
             nome VARCHAR(64) NOT NULL,
             email VARCHAR(64) NOT NULL UNIQUE,
             data_nasc DATE NOT NULL,
@@ -47,7 +47,7 @@ const createDependentTables = () =>
         );
         
         CREATE TABLE labenu_system_teacher (
-            id INT PRIMARY KEY,
+            id VARCHAR(64) PRIMARY KEY,
             nome VARCHAR(64) NOT NULL,
             email VARCHAR(64) NOT NULL UNIQUE,
             data_nasc DATE NOT NULL,

@@ -6,6 +6,7 @@ import createPerson from './endpoints/createPerson'
 import { getStudents } from './endpoints/getStudents'
 import { getTeachers } from './endpoints/getTeachers'
 import getAgeStudentsById from './endpoints/getAgeStudentsById'
+import { getPersonClass } from './endpoints/getPersonClass'
 import updatePersonClass from './endpoints/updatePersonClass'
 import removePerson from './endpoints/removePerson'
 
@@ -20,6 +21,7 @@ app.post("/createClass", createClass)
 app.get('/students', getStudents)
 app.get('/teachers', getTeachers)
 app.get('/student/:id', getAgeStudentsById)
+app.get('/personClass', getPersonClass)
 
 app.put('/turma:id', updatePersonClass)
 

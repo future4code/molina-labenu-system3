@@ -1,14 +1,19 @@
 import { connection } from "./connection";
 
-const insertStudent = async (nome: string, email: string, newDate: string): Promise<any> => {
+const insertStudent = async (
+    nome: string, 
+    email: string, 
+    newDate: string,
+    table: string
+    ):Promise<any> => {
 
-    const result = await connection('labenu_system_student')
+    const result = await connection(`labenu_system_${table}`)
     .insert({
-        id: Date.now() + Math.random().toString(),
+        id: Math.random(),
         nome,
         email,
         data_nasc: newDate,
-        turma_id: "1"
+        class_id: "007"
     })
 
     return result

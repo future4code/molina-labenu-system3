@@ -5,6 +5,7 @@ import createClass from './endpoints/createClass'
 import createPerson from './endpoints/createPerson'
 import { getStudents } from './endpoints/getStudents'
 import { getTeachers } from './endpoints/getTeachers'
+import getAgeStudentsById from './endpoints/getAgeStudentsById'
 import updatePersonClass from './endpoints/updatePersonClass'
 
 export const app = express()
@@ -17,6 +18,7 @@ app.post("/createClass", createClass)
 
 app.get('/students', getStudents)
 app.get('/teachers', getTeachers)
+app.get('/student/:id', getAgeStudentsById)
 
 app.put('/turma:id', updatePersonClass)
 

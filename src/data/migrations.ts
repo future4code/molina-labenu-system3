@@ -80,7 +80,7 @@ const insertUsers = () => connection("labenu_system_specialties")
 const closeConnection = () => { connection.destroy() }
 
 createIndepentTables()
-    // .then(createDependentTables)
-    // .then(createTeacherSpecialtiesTable)
-    // .then(insertUsers)
-    // .then(closeConnection)
+    .then(createDependentTables)
+    .then(createTeacherSpecialtiesTable)
+    .then(insertUsers)
+    .then(closeConnection)

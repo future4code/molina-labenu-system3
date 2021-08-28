@@ -4,7 +4,7 @@ import updateModuleClass from "../data/updateModuleClass";
 
 const putModuleClass = async(req: Request, res: Response)=>{
     try{
-        const {id, modulo} = req.body
+        const {id, module} = req.body
         const table = "class"
 
         const getClass = await selectElementById(id, table)
@@ -13,18 +13,18 @@ const putModuleClass = async(req: Request, res: Response)=>{
             throw new Error("Turma não encontrada")
         }
 
-        if(!id || !modulo){
+        if(!id || !module){
             throw new Error("Id e module obrigatórios")
         }
 
-        if(typeof id !== "string" || typeof modulo !== "string"){
+        if(typeof id !== "string" || typeof module !== "string"){
             throw new Error("id e módulo devem ser strings")
         }
 
-        await updateModuleClass(id, modulo)
+        await updateModuleClass(id, module)
 
         res.status(202).send(`Módulo da turma ${getClass[0].nome}
-        atualizado com sucesso para ${modulo}` )
+        atualizado com sucesso para ${module}` )
 
 
     } catch(error) {

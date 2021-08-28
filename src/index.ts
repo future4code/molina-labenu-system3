@@ -18,7 +18,7 @@ export const app = express()
 app.use(express.json())
 app.use(cors())
 
-app.post("/cadastro", createPerson)
+app.post("/register", createPerson)
 app.post("/createClass", createClass)
 
 app.post("/cadastro/hobbie", createHobbieById)
@@ -28,8 +28,8 @@ app.get('/teachers', getTeachers)
 app.get('/student/:id', getAgeStudentsById)
 app.get('/personClass', getPersonClass)
 
-app.put("/turma", putModuleClass)
-app.put('/turma:id', updatePersonClass)
+app.put("/class", putModuleClass)
+app.put('/class/:id', updatePersonClass)
 
 app.delete('/deletar',removePerson)
 

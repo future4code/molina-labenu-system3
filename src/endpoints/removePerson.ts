@@ -1,27 +1,32 @@
 import { Request, Response } from "express"
 import { deletePerson } from "../data/deletePerson"
+import selectElementById from "../data/selectElementById"
 
 const removePerson = async(req: Request, res: Response) => {
 
     try {
 
-        const {id, tipo} = req.body
+        const {personId, type} = req.body
         
-        const table = tipo
+        const table = type
 
-        console.log(id)
+        const result = await selectElementById(personId, table)
+
+        if(!result.length){
+            throw new Error("Usuário não encontrado")
+        }
         
-        if (!id || !tipo) {
+        if (!personId || !type) {
             throw new Error("Preencha todos os campos obrigatórios")
         }
 
-        if(tipo !== "student" && tipo !== "teacher") {
-            throw new Error("O campo tipo precisa ser preenchido com student ou teacher")
+        if(type !== "student" && type !== "teacher") {
+            throw new Error("O campo type precisa ser preenchido com student ou teacher")
         }
     
-        await deletePerson(id, table)
+        await deletePerson(personId, table)
         
-        const sucessMessage = tipo === 'student'? 'Estudante excluído com sucesso' : 'Docente excluído com sucesso'
+        const sucessMessage = type === 'student'? 'Estudante excluído com sucesso' : 'Docente excluído com sucesso'
 
         res.status(201).send({message: sucessMessage})
         

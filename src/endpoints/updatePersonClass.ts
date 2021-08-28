@@ -1,28 +1,39 @@
 import { Request, Response } from "express"
+import selectElementById from "../data/selectElementById"
 import { updateClass } from "../data/updateClass"
 
 const updatePersonClass = async(req: Request, res: Response) => {
 
     try {
 
-        const {turma, tipo} = req.body
+        const {classId, type} = req.body
         const id = req.params.id
         
-        const table = tipo
+        const table = type
 
-        console.log(req.body)
+        const result = await selectElementById(id, table)
+
+        if(!result.length){
+            throw new Error("Estudante ou Docente não encontrado")
+        }
+
+        const findClass = await selectElementById(classId, "class")
+
+        if(!findClass.length){
+            throw new Error("Turma não encontrada")
+        }
         
-        if (!id || !turma || !tipo) {
+        if (!id || !classId || !type) {
             throw new Error("Preencha todos os campos obrigatórios")
         }
 
-        if(tipo !== "student" && tipo !== "teacher") {
-            throw new Error("O campo tipo precisa ser preenchido com student ou teacher")
+        if(type !== "student" && type !== "teacher") {
+            throw new Error("O campo type precisa ser preenchido com student ou teacher")
         }
     
-        await updateClass(id, turma, table)
+        await updateClass(id, classId, table)
         
-        const sucessMessage = tipo === 'student'? 'Turma do estudante atualizada com sucesso' : 'Turma do docente atualizada com sucesso'
+        const sucessMessage = type === 'student'? 'Turma do estudante atualizada com sucesso' : 'Turma do docente atualizada com sucesso'
 
         res.status(201).send({message: sucessMessage})
         

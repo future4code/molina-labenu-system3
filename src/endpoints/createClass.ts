@@ -3,29 +3,29 @@ import insertClass from "../data/insertClass";
 
 const createClass = async(req: Request, res: Response) =>{
     try{
-        const {nome, dataInicio, dataFinal, modulo, turno} = req.body
+        const {name, startDate, finalDate, module, shift} = req.body
 
-        if(!nome || !dataInicio || !dataFinal || !turno){
-            throw new Error("Obrigatório nome, data de inicio, data final e turno")
+        if(!name || !startDate || !finalDate || !shift){
+            throw new Error("Obrigatório name, data de inicio, data final e shift")
         }
 
-        if(typeof nome !== "string" || typeof dataInicio !== "string" || typeof dataFinal !== "string" 
-        || typeof modulo !== "string" || typeof turno !== "string"){
-            throw new Error("Esperado tipo string para 'nome', 'dataInicio', 'dataFinal' e 'modulo'")
+        if(typeof name !== "string" || typeof startDate !== "string" || typeof finalDate !== "string" 
+        || typeof module !== "string" || typeof shift !== "string"){
+            throw new Error("Esperado tipo string para 'name', 'startDate', 'finalDate' e 'module'")
         }
 
-        const novoTurno = turno && (turno as string).toLowerCase()
+        const newShift = shift && (shift as string).toLowerCase()
 
-        if(novoTurno !== "integral" && novoTurno !== "noturna"){
-            throw new Error("Inclua integral ou noturna para turno")
+        if(newShift !== "integral" && newShift !== "noturna"){
+            throw new Error("Inclua integral ou noturna para shift")
         }
 
-        const novaDataInicio = dataInicio.split("/").reverse().join("/")
-        const novaDataFinal = dataFinal.split("/").reverse().join("/")
+        const newStartDate = startDate.split("/").reverse().join("/")
+        const newFinalDate = finalDate.split("/").reverse().join("/")
         
-        await insertClass(nome, novaDataInicio, novaDataFinal, modulo, novoTurno)
+        await insertClass(name, newStartDate, newFinalDate, module, newShift)
 
-        res.status(200).send({message:`Classe ${nome} Criada com sucesso`})
+        res.status(200).send({message:`Classe ${name} Criada com sucesso`})
         
     } catch (error) {
         switch(error.code){

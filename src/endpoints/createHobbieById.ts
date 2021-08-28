@@ -1,23 +1,27 @@
 import { Request, Response } from "express"
 import insertHobbie from '../data/insertHobbie'
+import selectElementById from "../data/selectElementById"
 
 const createHobbieById = async(req: Request, res: Response) => {
 
     try {
 
-        const {id, nome } = req.body
+        const {studentId, nome } = req.body
        
-        console.log(req.body)
-        console.log("nome antes", nome[0])
-        
-        if (!nome || !id ) {
+        const result = await selectElementById(studentId, "student")
+
+        if(!result.length){
+            throw new Error("Estudante não encontrado")
+        }
+     
+        if (!nome || !studentId ) {
             throw new Error("Preencha todos os campos obrigatórios")
         }
 
         await Promise.all(
             nome.map( async(hobbie: string) => {
                 const idHobbie = Date.now() + Math.random().toString()
-                await insertHobbie(id, hobbie, idHobbie)  
+                await insertHobbie(studentId, hobbie, idHobbie)  
             })
         )
         

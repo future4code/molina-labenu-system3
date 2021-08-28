@@ -8,7 +8,7 @@ export const getStudentsBySameHobby = async (req: Request, res: Response) => {
         const hobby = req.params.hobby
         const result = await selectStudentsBySameHobby(hobby)
        
-        if(!result){
+        if(!result.length){
             throw new Error("Nenhum estudante com mesmo hobby");
         }
 

@@ -1,6 +1,4 @@
-import express from 'express'
-import cors from 'cors'
-import { AddressInfo } from 'net'
+import app from './app'
 import createClass from './endpoints/createClass'
 import createPerson from './endpoints/createPerson'
 import { getStudents } from './endpoints/getStudents'
@@ -12,11 +10,6 @@ import { getPersonClass } from './endpoints/getPersonClass'
 import updatePersonClass from './endpoints/updatePersonClass'
 import removePerson from './endpoints/removePerson'
 import putModuleClass from './endpoints/putModuleClass'
-
-export const app = express()
-
-app.use(express.json())
-app.use(cors())
 
 app.post("/register", createPerson)
 app.post("/createClass", createClass)
@@ -31,15 +24,7 @@ app.get('/personClass', getPersonClass)
 app.put("/class", putModuleClass)
 app.put('/class/:id', updatePersonClass)
 
-app.delete('/deletar',removePerson)
+app.delete('/deletePerson',removePerson)
 
 app.get("/students/sameHobby/:hobby", getStudentsBySameHobby)
 
-const server = app.listen(process.env.PORT || 3003, () => {
-    if(server){
-        const address = server.address() as AddressInfo;
-        console.log(`Server is running in http://localhost:${address.port}`);
-    }else{
-        console.log("Failure upon starting server.")
-    }
-})

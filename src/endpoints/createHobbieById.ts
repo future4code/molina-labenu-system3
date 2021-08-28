@@ -6,7 +6,7 @@ const createHobbieById = async(req: Request, res: Response) => {
 
     try {
 
-        const {studentId, nome } = req.body
+        const {studentId, name } = req.body
        
         const result = await selectElementById(studentId, "student")
 
@@ -14,12 +14,12 @@ const createHobbieById = async(req: Request, res: Response) => {
             throw new Error("Estudante não encontrado")
         }
      
-        if (!nome || !studentId ) {
+        if (!name || !studentId ) {
             throw new Error("Preencha todos os campos obrigatórios")
         }
 
         await Promise.all(
-            nome.map( async(hobbie: string) => {
+            name.map( async(hobbie: string) => {
                 const idHobbie = Date.now() + Math.random().toString()
                 await insertHobbie(studentId, hobbie, idHobbie)  
             })

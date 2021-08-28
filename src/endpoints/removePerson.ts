@@ -1,6 +1,8 @@
 import { Request, Response } from "express"
 import { deletePerson } from "../data/deletePerson"
 import selectElementById from "../data/selectElementById"
+import deleteRelation from "../data/deleteRelation"
+import selectRelationById from "../data/selectRelationById"
 
 const removePerson = async(req: Request, res: Response) => {
 
@@ -22,6 +24,14 @@ const removePerson = async(req: Request, res: Response) => {
 
         if(type !== "student" && type !== "teacher") {
             throw new Error("O campo type precisa ser preenchido com student ou teacher")
+        }
+
+        const typeRelation = table === "student" ? "student_hobbies" :"teacher_specialties"
+
+        const relation = await selectRelationById(personId, typeRelation, type)
+
+        if(relation.length){
+            await deleteRelation(personId, typeRelation, type)
         }
     
         await deletePerson(personId, table)

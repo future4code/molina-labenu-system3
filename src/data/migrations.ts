@@ -31,6 +31,8 @@ const createIndepentTables = () => connection
 const createDependentTables = () =>
         connection.raw(`
 
+
+
         CREATE TABLE labenu_system_student (
             id VARCHAR(64) PRIMARY KEY,
             nome VARCHAR(64) NOT NULL,

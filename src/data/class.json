@@ -1,1 +1,9 @@
-[]
+[
+    {
+        "id":"disponivel",
+        "nome": "Aluno sem turma",
+        "data_inicio": "1900/01/01",
+        "data_final": "1900/02/01",
+        "modulo":"0"
+    }
+]

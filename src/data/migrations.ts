@@ -1,5 +1,6 @@
 import { connection } from "./connection"
-import specialities from "./specialties.json"
+import specialties from "./specialties.json"
+import classDefined from "./class.json"
 
 const printError = (error: any) => { console.log(error.sqlMessage || error.message) }
 
@@ -74,9 +75,14 @@ const createTeacherSpecialtiesTable = () =>
         .then(() => { console.log("Tabela labenu_system_teacher_specialties criada") })
         .catch(printError)
 
-const insertUsers = () => connection("labenu_system_specialties")
-   .insert(specialities)
+const insertSpecialties = () => connection("labenu_system_specialties")
+   .insert(specialties)
    .then(() => { console.log("Especialidades Criadas") })
+   .catch(printError)
+
+const insertClass = () => connection("labenu_system_class")
+   .insert(classDefined)
+   .then(() => { console.log("Class criada") })
    .catch(printError)
 
 const closeConnection = () => { connection.destroy() }
@@ -84,5 +90,6 @@ const closeConnection = () => { connection.destroy() }
 createIndepentTables()
     .then(createDependentTables)
     .then(createTeacherSpecialtiesTable)
-    .then(insertUsers)
+    .then(insertSpecialties)
+    .then(insertClass)
     .then(closeConnection)

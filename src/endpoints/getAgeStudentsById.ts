@@ -1,18 +1,16 @@
 import { Request, Response } from "express";
-import selectAgeStudentsById from "../data/selectAgeStudentsById";
-import selectStudentById from "../data/selectStudentById";
+import selectElementById from "../data/selectElementById";
 
 const getAgeStudentsById = async(req: Request, res: Response) => {
     try{
         const studentId = req.params.id
+        const table = "student"
 
-        const verifyStudent = await selectStudentById(studentId)
+        const result = await selectElementById(studentId, table)
 
-        if(!verifyStudent.length){
+        if(!result.length){
             throw new Error("Usuário não encontrado")
         }
-
-        const result = await selectAgeStudentsById(studentId)
 
         const ageInMilisseconds: number = Date.now() - result[0].data_nasc.getTime()
         const ageInYears: number = ageInMilisseconds/1000/60/60/24/365

@@ -9,7 +9,6 @@ export const getTeachers = async (req: Request, res: Response) => {
 
         if(!result){
             throw new Error("Docentes não encontrados");
-            
         }
 
         const teachers = result.map((teacher: any) => {

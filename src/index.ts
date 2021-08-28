@@ -7,6 +7,7 @@ import createClass from './endpoints/createClass'
 import { getStudents } from './endpoints/getStudents'
 import { getTeachers } from './endpoints/getTeachers'
 import createHobbieById from './endpoints/createHobbieById'
+import { getStudentsBySameHobby } from './endpoints/getStudentsBySameHobby'
 
 export const app = express()
 
@@ -21,6 +22,8 @@ app.post("/cadastro/hobbie", createHobbieById)
 
 app.get('/students', getStudents)
 app.get('/teachers', getTeachers)
+
+app.get("/students/sameHobby/:hobby", getStudentsBySameHobby)
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if(server){

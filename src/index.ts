@@ -9,6 +9,7 @@ import getAgeStudentsById from './endpoints/getAgeStudentsById'
 import { getPersonClass } from './endpoints/getPersonClass'
 import updatePersonClass from './endpoints/updatePersonClass'
 import removePerson from './endpoints/removePerson'
+import putModuleClass from './endpoints/putModuleClass'
 
 export const app = express()
 
@@ -23,6 +24,7 @@ app.get('/teachers', getTeachers)
 app.get('/student/:id', getAgeStudentsById)
 app.get('/personClass', getPersonClass)
 
+app.put("/turma", putModuleClass)
 app.put('/turma:id', updatePersonClass)
 
 app.delete('/deletar',removePerson)

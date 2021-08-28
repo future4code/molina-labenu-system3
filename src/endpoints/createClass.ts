@@ -3,34 +3,34 @@ import insertClass from "../data/insertClass";
 
 const createClass = async(req: Request, res: Response) =>{
     try{
-        const {name, startDate, finalDate, module, shift} = req.body
+        const {nome, dataInicio, dataFinal, modulo, turno} = req.body
 
-        if(!name || !startDate || !finalDate || !shift){
-            throw new Error("Mandatory id, name, startDate, finalDate and shift")
+        if(!nome || !dataInicio || !dataFinal || !turno){
+            throw new Error("Obrigatório nome, data de inicio, data final e turno")
         }
 
-        if(typeof name !== "string" || typeof startDate !== "string" || typeof finalDate !== "string" 
-        || typeof module !== "string" || typeof shift !== "string"){
-            throw new Error("Expected string to 'name', 'startDate', 'finalDate' and 'module'")
+        if(typeof nome !== "string" || typeof dataInicio !== "string" || typeof dataFinal !== "string" 
+        || typeof modulo !== "string" || typeof turno !== "string"){
+            throw new Error("Esperado tipo string para 'nome', 'dataInicio', 'dataFinal' e 'modulo'")
         }
 
-        const newShift = shift && (shift as string).toLowerCase()
+        const novoturno = turno && (turno as string).toLowerCase()
 
-        if(newShift !== "full" && newShift !== "evening class"){
-            throw new Error("Include full or evening class")
+        if(novoturno !== "integral" && novoturno !== "noturna"){
+            throw new Error("Inclua integral ou noturna para turno")
         }
 
-        const newStartDate = startDate.split("/").reverse().join("/")
-        const newFinalDate = finalDate.split("/").reverse().join("/")
+        const novaDataInicio = dataInicio.split("/").reverse().join("/")
+        const novaDataFinal = dataFinal.split("/").reverse().join("/")
         
-        await insertClass(name, newStartDate, newFinalDate, module, newShift)
+        await insertClass(nome, novaDataInicio, novaDataFinal, modulo, novoturno)
 
         res.status(200).send({message:'Class Created Successfully'})
         
     } catch (error) {
         switch(error.code){
             case "WARN_DATA_TRUNCATED":
-                res.status(404).send("Valid modules: '0', '1', '2', '3', '4', '5', '6', '7'")
+                res.status(404).send("Valid modulos: '0', '1', '2', '3', '4', '5', '6', '7'")
             case "ER_TRUNCATED_WRONG_VALUE":
                 res.status(404).send("Date format must be DD/MM/YYYY")
             default:

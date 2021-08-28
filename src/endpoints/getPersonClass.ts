@@ -1,25 +1,32 @@
 import { Request, Response } from "express";
 import selectPersonClass from "../data/selectPersonClass";
+import selectElementById from "../data/selectElementById";
 
 export const getPersonClass = async (req: Request, res: Response) => {
 
     try {
-        const {id, tipo} = req.body
+        const {classId, type} = req.body
         
-        const table = tipo
+        const table = type
 
-        if (!id || !tipo ) {
+        const verifyClass = await selectElementById(classId, "class")
+
+        if (!verifyClass.length) {
+            throw new Error("Turma não existe")
+        }
+
+        if (!classId || !type ) {
             throw new Error("Preencha todos os campos obrigatórios")
         }
         
-        if(tipo !== "student" && tipo !== "teacher") {
-            throw new Error("O campo tipo precisa ser preenchido com student ou teacher")
+        if(type !== "student" && type !== "teacher") {
+            throw new Error("O campo type precisa ser preenchido com student ou teacher")
         }
         
-        const result = await selectPersonClass( id, table)
+        const result = await selectPersonClass(classId, table)
         
         if(!result){
-            throw new Error("Estudantes não encontrados");
+            throw new Error("Não foi encontrado nenhum dado");
         }
 
         res.status(200).send(result)

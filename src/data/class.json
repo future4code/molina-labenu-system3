@@ -1,9 +1,23 @@
 [
     {
-        "id":"disponivel",
+        "id": "disponivel",
         "nome": "Aluno sem turma",
         "data_inicio": "1900/01/01",
         "data_final": "1900/02/01",
+        "modulo":"0"
+    },
+    {
+        "id": "16300914781440.8952241207458947",
+        "nome": "Molina",
+        "data_inicio": "2021/04/24",
+        "data_final": "2021/10/22",
+        "modulo":"4"
+    },
+    {
+        "id": "16300911961130.023888981972295389",
+        "nome": "Curie-na-night",
+        "data_inicio": "2021/09/24",
+        "data_final": "2022/01/22",
         "modulo":"0"
     }
 ]

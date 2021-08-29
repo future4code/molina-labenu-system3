@@ -31,8 +31,13 @@ const createClass = async(req: Request, res: Response) =>{
         switch(error.code){
             case "WARN_DATA_TRUNCATED":
                 res.status(404).send("Informe módulos entre 0 e 7")
+                break
             case "ER_TRUNCATED_WRONG_VALUE":
                 res.status(404).send("Formato da data deve ser DD/MM/YYYY")
+                break
+            case "ER_DUP_ENTRY":
+                res.status(404).send("Turma já cadastrada")
+                break
             default:
                 res.status(404).send(error.message || error.sqlMessage)
         }

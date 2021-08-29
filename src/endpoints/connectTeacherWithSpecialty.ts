@@ -10,14 +10,10 @@ const connectTeacherWithSpecialty = async (req: Request, res: Response) => {
             throw new Error("Os campos 'teacherId' e 'specialtiesId' são obrigatorios")
         }
 
-        console.log("1")
-
         const findTeacher = await selectElementById(teacherId, "teacher")
         if(!findTeacher.length){
             throw new Error("Não existe docente com Id enviado")
         }
-
-        console.log("2")
 
         await Promise.all(
             specialtiesId.map(async(specialties: string) => {
@@ -28,15 +24,11 @@ const connectTeacherWithSpecialty = async (req: Request, res: Response) => {
             })
         )
 
-        console.log("3")
-
         await Promise.all(
             specialtiesId.map(async(specialty: string) =>{
                 await insertToTeacherSpecialties(teacherId,specialty)
             })
         )
-
-        console.log("4")
 
         res.status(200).send("Especialidades adicionadas")
 

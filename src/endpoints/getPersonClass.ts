@@ -30,7 +30,7 @@ export const getPersonClass = async (req: Request, res: Response) => {
         }
 
         res.status(200).send(result)
-    } catch (error) {
+    } catch (error: any) {
         res.status(404).send(error.message || error.sqlMessage)
     }
 }

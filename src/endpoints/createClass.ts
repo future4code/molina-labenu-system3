@@ -27,7 +27,7 @@ const createClass = async(req: Request, res: Response) =>{
 
         res.status(200).send({message:`Classe ${name} Criada com sucesso`})
         
-    } catch (error) {
+    } catch (error: any) {
         switch(error.code){
             case "WARN_DATA_TRUNCATED":
                 res.status(404).send("Informe módulos entre 0 e 7")

@@ -20,7 +20,7 @@ export const getStudentsBySameHobby = async (req: Request, res: Response) => {
         })
 
         res.status(200).send(students)
-    } catch (error) {
+    } catch (error: any) {
         res.status(404).send(error.message || error.sqlMessage)
     }
 }

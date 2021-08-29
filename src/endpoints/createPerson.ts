@@ -38,7 +38,7 @@ const createPerson = async (req: Request, res: Response) => {
 
         res.status(201).send({ message: sucessMessage })
 
-    } catch (error) {
+    } catch (error: any) {
         switch (error.code) {
             case "ER_DUP_ENTRY":
                 res.status(404).send("E-mail já existe")

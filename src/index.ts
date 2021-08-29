@@ -16,7 +16,7 @@ import getClass from './endpoints/getClass'
 app.post("/register", createPerson)
 app.post("/createClass", createClass)
 
-app.post("/cadastro/hobbie", createHobbieById)
+app.post("/resgister/hobbie", createHobbieById)
 app.post("/relationteacherspecialty",connectTeacherWithSpecialty)
 
 app.get("/allclasses", getClass)

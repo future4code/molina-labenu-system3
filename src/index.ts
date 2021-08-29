@@ -10,11 +10,13 @@ import { getPersonClass } from './endpoints/getPersonClass'
 import updatePersonClass from './endpoints/updatePersonClass'
 import removePerson from './endpoints/removePerson'
 import putModuleClass from './endpoints/putModuleClass'
+import connectTeacherWithSpecialty from './endpoints/connectTeacherWithSpecialty'
 
 app.post("/register", createPerson)
 app.post("/createClass", createClass)
 
 app.post("/cadastro/hobbie", createHobbieById)
+app.post("/relationteacherspecialty",connectTeacherWithSpecialty)
 
 app.get('/students', getStudents)
 app.get('/teachers', getTeachers)

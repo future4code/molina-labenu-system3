@@ -11,7 +11,7 @@ const getClass = async(Req: Request, res: Response)=> {
             throw new Error("Não há turma cadastrada")
         }
 
-        res.status(200).send(result[0][0])
+        res.status(200).send(result[0])
 
     } catch(error: any) {
         res.status(404).send(error.message || error.sqlMessage)

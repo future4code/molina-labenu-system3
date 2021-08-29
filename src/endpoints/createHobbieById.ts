@@ -1,4 +1,5 @@
 import { Request, Response } from "express"
+import { isArrayBindingPattern } from "typescript"
 import insertHobbie from '../data/insertHobbie'
 import selectElementById from "../data/selectElementById"
 
@@ -12,6 +13,10 @@ const createHobbieById = async(req: Request, res: Response) => {
 
         if(!result.length){
             throw new Error("Estudante não encontrado")
+        }
+
+        if(typeof name !== "object"){
+            throw new Error("Os Hobbies devem ser enviados em um array de strings")
         }
      
         if (!name || !studentId ) {

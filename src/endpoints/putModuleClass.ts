@@ -27,7 +27,7 @@ const putModuleClass = async(req: Request, res: Response)=>{
         atualizado com sucesso para ${module}` )
 
 
-    } catch(error) {
+    } catch(error: any) {
         switch(error.code){
             case "WARN_DATA_TRUNCATED":
                 res.status(404).send("Informe Módulos válidos de 0 à 7")

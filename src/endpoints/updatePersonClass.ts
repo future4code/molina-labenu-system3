@@ -37,7 +37,7 @@ const updatePersonClass = async(req: Request, res: Response) => {
 
         res.status(201).send({message: sucessMessage})
         
-    } catch (error) {
+    } catch (error: any) {
         res.status(404).send(error.message || error.sqlMessage)
     }
 }

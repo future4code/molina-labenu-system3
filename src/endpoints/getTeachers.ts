@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import moment from "moment"
 import selectTable from "../data/selectTable";
 
 const getTeachers = async (req: Request, res: Response) => {
@@ -14,7 +15,7 @@ const getTeachers = async (req: Request, res: Response) => {
                 id: teacher.id,
                 nome: teacher.nome,
                 email: teacher.email,
-                data_nasc: teacher.data_nasc,
+                data_nasc: moment(teacher.data_nasc, 'YYYY-MM-DD').format('DD/MM/YYYY'),
                 turma_id: teacher.class_id
             };
         });

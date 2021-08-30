@@ -5,7 +5,7 @@ const updateModuleClass = async(id: string, modulo: string): Promise<any> => {
         UPDATE labenu_system_class
         SET modulo="${modulo}"
         WHERE id="${id}"
-    `)
-}
+    `);
+};
 
-export default updateModuleClass
+export default updateModuleClass;

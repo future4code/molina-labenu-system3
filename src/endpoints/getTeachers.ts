@@ -1,11 +1,9 @@
 import { Request, Response } from "express";
 import selectTable from "../data/selectTable";
 
-export const getTeachers = async (req: Request, res: Response) => {
-
+const getTeachers = async (req: Request, res: Response) => {
     try {
-
-        const result = await selectTable('teacher')
+        const result = await selectTable("teacher");
 
         if(!result){
             throw new Error("Docentes não encontrados");
@@ -18,11 +16,14 @@ export const getTeachers = async (req: Request, res: Response) => {
                 email: teacher.email,
                 data_nasc: teacher.data_nasc,
                 turma_id: teacher.class_id
-            }
-        })
+            };
+        });
 
-        res.status(200).send(teachers)
+        res.status(200).send(teachers);
+
     } catch (error: any) {
-        res.status(404).send(error.message || error.sqlMessage)
-    }
-}
+        res.status(500).send(error.message || error.sqlMessage)
+    };
+};
+
+export default getTeachers;

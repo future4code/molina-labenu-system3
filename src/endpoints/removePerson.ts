@@ -5,9 +5,7 @@ import deleteRelation from "../data/deleteRelation"
 import selectRelationById from "../data/selectRelationById"
 
 const removePerson = async(req: Request, res: Response) => {
-
     try {
-
         const {personId, type} = req.body
         
         const table = type
@@ -38,10 +36,10 @@ const removePerson = async(req: Request, res: Response) => {
         
         const sucessMessage = type === 'student'? 'Estudante excluído com sucesso' : 'Docente excluído com sucesso'
 
-        res.status(201).send({message: sucessMessage})
+        res.status(202).send({message: sucessMessage})
         
     } catch (error: any) {
-        res.status(404).send(error.message || error.sqlMessage)
+        res.status(500).send(error.message || error.sqlMessage)
     }
 }
 

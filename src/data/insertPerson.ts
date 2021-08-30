@@ -7,17 +7,15 @@ const insertPerson = async (
     turma: string,
     table: string
     ):Promise<any> => {
-
-    const result = await connection(`labenu_system_${table}`)
-    .insert({
-        id: Date.now() + Math.random().toString(),
-        nome,
-        email,
-        data_nasc: newDate,
-        class_id: turma ? turma : "disponivel"
-    })
-
-    return result
-}
+        const result = await connection(`labenu_system_${table}`)
+        .insert({
+            id: Date.now() + Math.random().toString(),
+            nome,
+            email,
+            data_nasc: newDate,
+            class_id: turma ? turma : "disponivel"
+        });
+        return result;
+};
 
 export default insertPerson;

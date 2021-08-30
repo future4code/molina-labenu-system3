@@ -3,9 +3,7 @@ import selectElementById from "../data/selectElementById"
 import { updateClass } from "../data/updateClass"
 
 const updatePersonClass = async(req: Request, res: Response) => {
-
     try {
-
         const {classId, type} = req.body
         const id = req.params.id
         

@@ -5,9 +5,7 @@ import deleteRelation from "../data/deleteRelation"
 import selectRelationById from "../data/selectRelationById"
 
 const removePerson = async(req: Request, res: Response) => {
-
     try {
-
         const {personId, type} = req.body
         
         const table = type

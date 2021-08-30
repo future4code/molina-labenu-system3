@@ -11,10 +11,8 @@ const selectStudentsBySameHobby = async (
             JOIN labenu_system_student AS students
             ON users.student_id = students.id
             WHERE hobbies.nome LIKE "%${name}%";
-        `)
-    
-    return result[0]
-
-}
+        `);
+    return result[0];
+};
 
 export default selectStudentsBySameHobby;

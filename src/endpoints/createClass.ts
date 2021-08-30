@@ -3,29 +3,29 @@ import insertClass from "../data/insertClass";
 
 const createClass = async(req: Request, res: Response) =>{
     try{
-        const {name, startDate, finalDate, module, shift} = req.body
+        const {name, startDate, finalDate, module, shift} = req.body;
 
         if(!name || !startDate || !finalDate || !shift){
             throw new Error("Obrigatório name, data de inicio, data final e shift")
-        }
+        };
 
         if(typeof name !== "string" || typeof startDate !== "string" || typeof finalDate !== "string" 
         || typeof module !== "string" || typeof shift !== "string"){
             throw new Error("Esperado tipo string para 'name', 'startDate', 'finalDate' e 'module'")
-        }
+        };
 
-        const newShift = shift && (shift as string).toLowerCase()
+        const newShift = shift && (shift as string).toLowerCase();
 
         if(newShift !== "integral" && newShift !== "noturna"){
             throw new Error("Inclua integral ou noturna para shift")
-        }
+        };
 
-        const newStartDate = startDate.split("/").reverse().join("/")
-        const newFinalDate = finalDate.split("/").reverse().join("/")
+        const newStartDate = startDate.split("/").reverse().join("/");
+        const newFinalDate = finalDate.split("/").reverse().join("/");
         
-        await insertClass(name, newStartDate, newFinalDate, module, newShift)
+        await insertClass(name, newStartDate, newFinalDate, module, newShift);
 
-        res.status(200).send({message:`Classe ${name} Criada com sucesso`})
+        res.status(200).send({message:`Classe ${name} Criada com sucesso`});
         
     } catch (error: any) {
         switch(error.code){
@@ -40,8 +40,8 @@ const createClass = async(req: Request, res: Response) =>{
                 break
             default:
                 res.status(404).send(error.message || error.sqlMessage)
-        }
-    }
-}
+        };
+    };
+};
 
-export default createClass
+export default createClass;

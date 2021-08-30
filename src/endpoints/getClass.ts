@@ -19,9 +19,9 @@ const getClass = async(Req: Request, res: Response)=> {
                 data_final: moment(r.data_final, 'YYYY-MM-DD').format('DD/MM/YYYY'),
             }
         })
-        res.status(200).send({
-            classes: resultsFormated
-        });
+        res.status(200).send(
+            resultsFormated
+        );
 
     } catch(error: any) {
         res.status(500).send(error.message || error.sqlMessage)

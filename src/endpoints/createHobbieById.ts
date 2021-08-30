@@ -9,28 +9,28 @@ const createHobbieById = async(req: Request, res: Response) => {
         const result = await selectElementById(studentId, "student");
 
         if(!result.length){
-            throw new Error("Estudante não encontrado")
+            throw new Error("Estudante não encontrado");
         };
 
         if(typeof name !== "object"){
-            throw new Error("Os Hobbies devem ser enviados em um array de strings")
+            throw new Error("Os Hobbies devem ser enviados em um array de strings");
         };
      
         if (!name || !studentId ) {
-            throw new Error("Preencha todos os campos obrigatórios")
+            throw new Error("Preencha todos os campos obrigatórios");
         };
 
         await Promise.all(
             name.map( async(hobbie: string) => {
                 const idHobbie = Date.now() + Math.random().toString()
-                await insertHobbie(studentId, hobbie, idHobbie)  
+                await insertHobbie(studentId, hobbie, idHobbie);  
             })
         );
         
-        res.status(200).send({message:'Hobbies cadastrados com sucesso!'});
+        res.status(201).send({message:'Hobbies cadastrados com sucesso!'});
         
     } catch (error: any) {
-        res.status(404).send(error.message || error.sqlMessage)
+        res.status(500).send(error.message || error.sqlMessage)
     };
 };
 

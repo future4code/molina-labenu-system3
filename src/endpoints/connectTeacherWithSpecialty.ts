@@ -10,16 +10,17 @@ const connectTeacherWithSpecialty = async (req: Request, res: Response) => {
             throw new Error("Os campos 'teacherId' e 'specialtiesId' são obrigatorios")
         };
 
-        const findTeacher = await selectElementById(teacherId, "teacher")
+        const findTeacher = await selectElementById(teacherId, "teacher");
+        
         if(!findTeacher.length){
-            throw new Error("Não existe docente com Id enviado")
+            throw new Error("Não existe docente com Id enviado");
         };
 
         await Promise.all(
             specialtiesId.map(async(specialties: string) => {
-                const findSpecialty = await selectElementById(specialties, "specialties")
+                const findSpecialty = await selectElementById(specialties, "specialties");
                 if(!findSpecialty.length){
-                    throw new Error(`Especialidade id = ${specialties} encontrado`)
+                    throw new Error(`Especialidade id = ${specialties} encontrado`);
                 };
             })
         );

@@ -22,7 +22,7 @@ const getStudents = async (req: Request, res: Response) => {
         res.status(200).send(students);
 
     } catch (error: any) {
-        res.status(404).send(error.message || error.sqlMessage)
+        res.status(500).send(error.message || error.sqlMessage)
     };
 };
 

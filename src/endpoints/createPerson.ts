@@ -32,20 +32,20 @@ const createPerson = async (req: Request, res: Response) => {
 
         await insertPerson(name, email, newDate, classId, table);
 
-        const sucessMessage = type === 'student' ? 'Estudante criado com sucesso' : 'Docente criado com sucesso';
+        const sucessMessage = type === "student" ? "Estudante criado com sucesso" : "Docente criado com sucesso";
 
         res.status(201).send({ message: sucessMessage });
 
     } catch (error: any) {
         switch (error.code) {
             case "ER_DUP_ENTRY":
-                res.status(404).send("E-mail já existe")
+                res.status(500).send("E-mail já existe")
                 break
             case "ER_TRUNCATED_WRONG_VALUE":
-                res.status(404).send("Data de nascimento deve ser informada no formato DD/MM/AAAA")
+                res.status(500).send("Data de nascimento deve ser informada no formato DD/MM/AAAA")
                 break
             default:
-                res.status(404).send(error.message || error.sqlMessage)
+                res.status(500).send(error.message || error.sqlMessage)
         };
     };
 };

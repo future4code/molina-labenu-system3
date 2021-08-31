@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import moment from "moment";
 import { connection } from "../data/connection";
 
 const getClass = async(Req: Request, res: Response)=> {
@@ -11,7 +12,16 @@ const getClass = async(Req: Request, res: Response)=> {
             throw new Error("Não há turma cadastrada")
         };
 
-        res.status(200).send(result[0]);
+        const resultsFormated = result[0].map((r:any )=> {
+            return{
+                ...r,
+                data_inicio: moment(r.data_inicio, 'YYYY-MM-DD').format('DD/MM/YYYY'),
+                data_final: moment(r.data_final, 'YYYY-MM-DD').format('DD/MM/YYYY'),
+            }
+        })
+        res.status(200).send(
+            resultsFormated
+        );
 
     } catch(error: any) {
         res.status(500).send(error.message || error.sqlMessage)
@@ -19,3 +29,4 @@ const getClass = async(Req: Request, res: Response)=> {
 };
 
 export default getClass;
+

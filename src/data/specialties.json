@@ -1,0 +1,30 @@
+[
+    {
+        "id":"1",
+        "nome": "React"
+    },
+    {
+        "id":"2",
+        "nome": "Redux"
+    },
+    {
+        "id":"3",
+        "nome": "CSS"
+    },
+    {
+        "id":"4",
+        "nome": "Typescript"
+    },
+    {
+        "id":"5",
+        "nome": "Programação Orientada a Objetos"
+    },
+    {
+        "id":"6",
+        "nome": "Backend"
+    },
+    {
+        "id":"7",
+        "nome": "Testes"
+    }
+]
